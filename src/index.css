@@ -1,13 +1,57 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+:root{
+  --dark-color: #000000;
+  --primary-color: #ECC30B;
+  --light-color: #FFFFFF; 
+
+  --main-font-family: 'Roboto', Helvetica, Arial , sans-serif;
+  --second-font-family: 'Public Sans','Roboto', Helvetica, Arial  sans-serif;
+  
+  
+  --h1-font-size: min(max(36px, 11.594vw), 56px);
+  --h2-font-size: min(max(30px,  8.6956vw), 48px);
+  --h3-font-size: min(max(28px, 8.6956vw), 48px);
+  --h4-font-size: min(max(24px, 8.6956vw), 42px);
+  --h5-font-size: min(max(18px, 5.797vw), 28px);
+  --sub-heading-font-size: min(max(16px, 5.797vw), 28px);
+  --body-text-font-size: min(max(14px,3.3816vw), 18px);
+  --small-text-font-size: 8px;
+}
+html{
+  scroll-behavior: smooth!important;
+  overflow-x: hidden;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body {  
+  background-color: #ffffff;
+  font-family: var(--main-font-family);
+  line-height: 1.166667;
+  color:  var(--light-color);
+  position: relative;
+  font-size: var(--body-text-font-size);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  
+}
+
+h1 {
+  font-size: var(--h1-font-size);
+  font-weight: 700;
+  margin: 0;
+}
+h2 {
+  font-size: var(--h2-font-size);
+}
+h3 {
+  font-size: var(--h3-font-size);
+}
+
+h4{
+  font-size: var(--h4-font-size);
+}
+h5 {
+  font-size: var(--h5-font-size);
+}
+h6 {
+  font-size: var(--sub-heading-font-size);
 }

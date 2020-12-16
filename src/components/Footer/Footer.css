@@ -1,0 +1,15 @@
+footer{
+    background-color: var(--dark-color);
+    color: #FFFFFF;
+    text-align: center;
+  padding: 9vw 1.5vw;
+}
+
+footer>h1>span {
+    font-size: var(--h5-font-size);
+}
+
+footer>p{
+    margin: 2vw 0;
+    font-size: var(--h5-font-size);
+}

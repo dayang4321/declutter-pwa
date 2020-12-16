@@ -1,0 +1,10 @@
+header{
+    background-color: var(--dark-color);
+    color: #FFFFFF;
+    text-align: center;
+  padding: 1.5vw;
+}
+
+header span {
+    font-size: var(--h5-font-size);
+}
