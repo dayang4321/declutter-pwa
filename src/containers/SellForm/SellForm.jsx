@@ -94,15 +94,15 @@ const SellForm = (props) => {
         <div className="d-flex align-items-center w-100 h-100 justify-content-center">       
             <form className="w-100" id="sellForm" onSubmit="">
                 <div>    
-                    <FormToolTip/>
+                    <FormToolTip textArrIndex={0} />
                     <Input label="Name of Product" />                    
                 </div>
                 <div>    
-                    <FormToolTip/>
+                    <FormToolTip textArrIndex={1}/>
                     <Textbox label="Description" />                    
                 </div>
                 <div>   
-                    <FormToolTip/>
+                    <FormToolTip textArrIndex={2}/>
                     <Input label="Selling Price" defaultValue="&#8358;" />
                 </div>
                 <div className="d-flex justify-content-between"> 
@@ -112,7 +112,7 @@ const SellForm = (props) => {
                 </div>
 
                 <div>
-                    <FormToolTip />
+                    <FormToolTip textArrIndex={3} />
                     <Checkbox label="This product has some defects" onChange={e => {
                         console.log(e.target.checked)
                         handleDefectMode(e.target.checked);
