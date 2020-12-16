@@ -1,0 +1,136 @@
+
+.my-input .form-control {
+    display: block;
+    width: 100%;
+    height: unset;
+    /* height: calc(1.5em + .75rem + 2px); */
+    padding: 5px .75rem;
+    line-height: 1.5;
+    color: var(--dark-color);
+    background-color: transparent;
+    background-clip: padding-box;
+    border: 5px solid var(--dark-color);
+    border-radius: 10px;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.form-control::placeholder{
+    font-family: var(--second-font-family);
+font-style: italic;
+color: var(--light-color);
+font-size: 14px;
+}
+
+.my-input .form-control:focus {
+    color: var(--dark-color);
+    background-color:transparent;
+    border-color: #000000;
+    outline: 0;
+    box-shadow: 0 0 0 0.2rem rgba(0,0,0,.25);
+}
+
+.my-input label:not(.custom-control-label){
+    display: inline-block;
+    margin-bottom: 3px;
+    color: var(--dark-color);
+    font-family: var(--second-font-family);
+font-weight: 600;
+margin-left: 24px;
+}
+.custom-select {
+    width: 100%;
+    height: 45px;
+    /* height: calc(1.5em + .75rem + 2px); */
+    padding: .375rem 1.75rem .375rem .75rem;
+    font-weight: 400;
+    line-height: 1.5;
+    color: var(--light-color);
+    /* background: #fff url(data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='4' height='5' viewBox='0 0 4 5'%3e%3cpath fill='%23343a40' d='M2 0L0 2h4zm0 5L0 3h4z'/%3e%3c/svg%3e) no-repeat right .75rem center/8px 10px; */
+     /* background: #fff url(../img/svg/select-arrow.svg) no-repeat right .75rem center/8px 10px; */
+    border-radius: 10px;
+    background-color: transparent;
+    border: 5px solid var(--light-color);
+}
+
+.custom-select option:not(:first-of-type){
+    color: #000000;
+}
+
+.my-input .custom-control{
+    padding: 0;
+}
+
+.my-input .custom-control-label::after {
+    position: absolute;
+    top: -1.5px;
+    left: -1.5rem;
+    display: block;
+    width: 25px;
+    height: 25px;
+    content: "";
+    background: no-repeat 50%/50% 50%;
+    border-radius: 5px;
+    
+}
+.my-input .custom-checkbox .custom-control-input:checked~.custom-control-label::after {
+    border: 5px solid black;
+    border-radius: 35%;
+    background: transparent;
+    background-image: none;
+}
+.my-input .custom-control-input:checked~.custom-control-label::before {
+    border: 9px solid white;
+    color: #fff;
+    border-radius: 45%;
+    /* border-color: #FFF; */
+    background-color: black;
+}
+
+.my-input .custom-checkbox .custom-control-label::before {
+    border-radius: 7.5px;
+}
+
+.my-input .custom-control-label{
+    color: var(--dark-color);
+    margin-left: 23px;
+    font-family: var(--second-font-family);
+    font-weight: 600;
+}
+
+.my-input .custom-control-label::before {
+    position: absolute;
+    top: -1.5px;
+    left: -1.5rem;
+    display: block;
+    width: 25px;
+    height: 25px;
+    pointer-events: none;
+    content: "";
+    background-color: #fff;
+    border: 5px solid #000000;
+    border-radius: 5px;
+}
+
+.custom-checkbox .custom-control-label{
+    line-height: 150%;
+    width: 80%;
+    position: relative;
+    margin-bottom: 0;
+    text-align: center;
+    vertical-align: middle;
+}
+
+
+.my-input.file-input{
+    position: relative;
+}
+
+.my-input .file{
+    visibility: hidden;
+    position: absolute;
+}
+
+.my-input.file-input p {
+font-weight: 600;
+font-family: var(--second-font-family);
+}
