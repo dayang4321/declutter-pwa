@@ -1,5 +1,5 @@
 import React from 'react';
-import SellForm from '../../containers/SellForm/SellForm';
+import SellForms from '../../containers/SellForms/SellForms';
 
 
 
@@ -9,7 +9,7 @@ function Seller() {
     <h2 className="mb-4">
        Lets help you sell your product.
     </h2>
-    <SellForm/>
+    <SellForms/>
         </div>
     )
 }

@@ -1,8 +1,8 @@
 import React from 'react';
-import FormToolTip from '../../components/UI/FormToolTip/FormToolTip';
-import Input, { Checkbox, FileInput, Textbox } from '../../components/UI/Input/Input';
-import { ReactComponent as PlusCircle } from '../../assets/img/svg/plus-circle.svg'
+import FormToolTip from '../../../components/UI/FormToolTip/FormToolTip';
+import Input, { Checkbox, FileInput, Textbox } from '../../../components/UI/Input/Input';
 import {Collapse} from 'react-bootstrap'
+import {ReactComponent as RightArrow} from '../../../assets/img/svg/right-arrow.svg'
 
 
 // import { AuthContext } from '../../context/AuthContext'
@@ -35,6 +35,8 @@ import './SellForm.css'
 
 
 const SellForm = (props) => {
+
+    const { isOpen,openHandler,id } = props;
 
     // const [
     //     //formLoading,
@@ -82,26 +84,36 @@ const SellForm = (props) => {
     // }      
     // }
 
+    const [defected, setDefected] = React.useState(false);
 
-    const [defected, setDefected] = React.useState(false)
+    const[title, setTitle]=React.useState('');
     
     const handleDefectMode = (bool) => {
         setDefected(bool)
     }
 
 
+
     return (
-        <div className="d-flex align-items-center w-100 h-100 justify-content-center">       
-            <form className="w-100" id="sellForm" onSubmit="">
-                <div>    
+        <div className="switch-collapse">
+        <Collapse in={!isOpen} >
+                <div onClick={()=>openHandler(id)} className="label-text">{title ? <span>{title}</span> : <span>&nbsp;</span>}<RightArrow className="collapse-arrow"/></div>
+         </Collapse>
+
+        <Collapse in={isOpen}>
+        <div className="form-collapse mt-5">
+                <div className="tooltip-group">    
                     <FormToolTip textArrIndex={0} />
-                    <Input label="Name of Product" />                    
+                        <Input onChange={(e) => {
+                           setTitle(e.target.value);                
+                        }
+                        } label="Name of Product" placeholder="eg. Ox standing fan, Living room couch." />                    
                 </div>
-                <div>    
+                <div className="tooltip-group">    
                     <FormToolTip textArrIndex={1}/>
                     <Textbox label="Description" />                    
                 </div>
-                <div>   
+                <div className="tooltip-group">   
                     <FormToolTip textArrIndex={2}/>
                     <Input label="Selling Price" defaultValue="&#8358;" />
                 </div>
@@ -111,7 +123,7 @@ const SellForm = (props) => {
                     <FileInput label="Add product pictures" type="photo" />
                 </div>
 
-                <div>
+                <div className="tooltip-group">
                     <FormToolTip textArrIndex={3} />
                     <Checkbox label="This product has some defects" onChange={e => {
                         console.log(e.target.checked)
@@ -131,12 +143,8 @@ const SellForm = (props) => {
                         </div>
                         </div>
                 </Collapse> 
-
-
-    <button className="another-btn py-2 px-3 w-100 text-center btn bg-transparent"><PlusCircle className="mr-3"/>Add another product</button>
-
-        <button className="submit-btn btn btn-dark p-3 w-100"  type="submit">Done</button>
-            </form>
+            </div>   
+            </Collapse>
         </div>
     );
 }

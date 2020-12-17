@@ -1,0 +1,29 @@
+.tooltip-group{
+    position: relative;
+    padding: 10px 0 0 0;
+}
+
+
+.label-text{
+    padding: 5vw 0;
+    font-family:var(--second-font-family);
+    font-weight: 600;
+    font-size: 18px;
+    border-bottom: 5px solid black;
+    position: relative;
+}
+
+
+.label-text .collapse-arrow {
+position: absolute;
+right: 0;
+top: 40%
+}
+
+.label-text span:first-of-type{
+    width: 93%;
+    display: block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

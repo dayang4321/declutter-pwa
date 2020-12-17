@@ -76,4 +76,6 @@ background-color: #000000;
 border-radius: 10px;
 font-family: var(--second-font-family);
 font-weight: 600;
+margin-top: 15vw;
+color: var(--dark-color);
 }

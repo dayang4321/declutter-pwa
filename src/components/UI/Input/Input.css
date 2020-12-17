@@ -14,10 +14,10 @@
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
 
-.form-control::placeholder{
+.my-input .form-control::placeholder{
     font-family: var(--second-font-family);
 font-style: italic;
-color: var(--light-color);
+color: var(--dark-color);
 font-size: 14px;
 }
 
