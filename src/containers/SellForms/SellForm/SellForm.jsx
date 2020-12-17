@@ -118,9 +118,9 @@ const SellForm = (props) => {
                     <Input label="Selling Price" defaultValue="&#8358;" />
                 </div>
                 <div className="d-flex justify-content-between"> 
-                    <FileInput label="Add product video" />
+                    <FileInput label="Add product video" capture="user" accept="video/*" />
 
-                    <FileInput label="Add product pictures" type="photo" />
+                    <FileInput label="Add product pictures"  capture="user" accept="image/*" type="photo" />
                 </div>
 
                 <div className="tooltip-group">
