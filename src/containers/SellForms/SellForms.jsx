@@ -2,13 +2,14 @@ import React,{useState,useEffect, useCallback} from 'react';
 import SellForm from './SellForm/SellForm';
 
 import { ReactComponent as PlusCircle } from '../../assets/img/svg/plus-circle.svg'
+import Tick from '../../assets/img/svg/tick.svg'
 import './SellForms.css'
 
 function SellForms() {
 
     const [isOpenArr, setIsOpenArr] = React.useState([true])
 
-  
+  const [isCompleted, setIsCompleted] =  React.useState(false)
 
     const [sellFormsArr, setSellFormsArr] = useState([])
     
@@ -21,7 +22,9 @@ function SellForms() {
 
 
 
-    const addProductHandler=()=>{
+    const addProductHandler = () => {
+      //  setSellFormsArr([]);
+        setIsCompleted(false)
         console.log(isOpenArr);
 
         console.log(sellFormsArr)
@@ -49,10 +52,14 @@ function SellForms() {
         setIsOpenArr([...newArr]);
     },[isOpenArr])
 
+    const completedHandler = () => {
+        setIsOpenArr([]);
+        setIsCompleted(true)
+    }
 
     useEffect(() => {
         const formArr = isOpenArr.map((bool,index) => {
-            return (<SellForm isOpen={bool} key={index} id={index} openHandler={openHandler} />)
+            return (<SellForm isOpen={bool} key={index} id={index} complete={completedHandler} openHandler={openHandler} />)
        }) 
 
     setSellFormsArr(formArr)
@@ -63,23 +70,32 @@ function SellForms() {
 
 
 
+    const completeMsg = (
+        <div className="text-center">
+        <img className="tick-svg mx-auto" src={Tick} alt="tick" />
+            <h2 className="text-left">You would be notified once your products are verified</h2>
+            <button className="another-btn w-100 text-center btn bg-transparent"
+                    onClick={(e) => {
+                        e.preventDefault();
+                      
+                        addProductHandler();
+                        console.log(sellFormsArr)
+                    }}>
+                    <PlusCircle className="mr-3" />Add another product</button>
+            </div>
+    )
+
 
 
     console.log(isOpenArr, formIndex, sellFormsArr )
 
     return (
-        <div className="d-flex align-items-center w-100 h-100 justify-content-center">       
-            <form className="w-100" id="sellForm">
-                {sellFormsArr}
-                <button className="another-btn py-2 px-3 w-100 text-center btn bg-transparent"
-                    onClick={(e) => {
-                        e.preventDefault();
-                      
-                        addProductHandler();
-                        console.log(sellFormsArr)}}>
-                    <PlusCircle className="mr-3"/>Add another product</button>
-                    <button className="submit-btn btn btn-dark p-3 w-100"  type="submit">Done</button>
-              </form>
+     <div>
+   {!isCompleted && (      <h2 className="mb-4">
+       Lets help you sell your product.
+    </h2>  )}  
+         
+                {isCompleted? completeMsg : sellFormsArr}
         </div>
     );
 }

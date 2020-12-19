@@ -78,5 +78,3 @@ export const timeConvert = (time) => {
  
         return new Date(time).toLocaleDateString('en-US', options1) + ' at ' + new Date(time).toLocaleTimeString('en-US', options2)
 }
-
-
