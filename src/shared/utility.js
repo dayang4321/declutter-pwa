@@ -11,6 +11,12 @@ export const checkValidity = (value, rules) => {
         return true;
     }
 
+    
+    if (rules.requiredArr) {
+        isValid = value[0] && isValid;
+    }
+
+
     if (rules.required) {
         isValid = value.trim() !== '' && isValid;
     }

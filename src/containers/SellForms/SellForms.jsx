@@ -9,7 +9,7 @@ function SellForms() {
 
     const [isOpenArr, setIsOpenArr] = React.useState([true])
 
-  const [isCompleted, setIsCompleted] =  React.useState(false)
+  const [isSuccess, setIsSuccess] =  React.useState(false)
 
     const [sellFormsArr, setSellFormsArr] = useState([])
     
@@ -24,7 +24,7 @@ function SellForms() {
 
     const addProductHandler = () => {
       //  setSellFormsArr([]);
-        setIsCompleted(false)
+        setIsSuccess(false)
         console.log(isOpenArr);
 
         console.log(sellFormsArr)
@@ -52,14 +52,14 @@ function SellForms() {
         setIsOpenArr([...newArr]);
     },[isOpenArr])
 
-    const completedHandler = () => {
+    const successHandler = () => {
         setIsOpenArr([]);
-        setIsCompleted(true)
+        setIsSuccess(true)
     }
 
     useEffect(() => {
         const formArr = isOpenArr.map((bool,index) => {
-            return (<SellForm isOpen={bool} key={index} id={index} complete={completedHandler} openHandler={openHandler} />)
+            return (<SellForm isOpen={bool} key={index} id={index} success={successHandler} openHandler={openHandler} />)
        }) 
 
     setSellFormsArr(formArr)
@@ -91,11 +91,11 @@ function SellForms() {
 
     return (
      <div>
-   {!isCompleted && (      <h2 className="mb-4">
+   {!isSuccess && (      <h2 className="mb-4">
        Lets help you sell your product.
     </h2>  )}  
          
-                {isCompleted? completeMsg : sellFormsArr}
+                {isSuccess? completeMsg : sellFormsArr}
         </div>
     );
 }

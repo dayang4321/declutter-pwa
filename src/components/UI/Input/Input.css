@@ -123,6 +123,7 @@ margin-left: 24px;
 
 .my-input.file-input{
     position: relative;
+    max-width: 48%;
 }
 
 .my-input .file{

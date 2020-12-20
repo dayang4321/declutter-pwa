@@ -10,10 +10,10 @@ import './Input.css'
 
 function Input(props) {
 
-    const {controlId, label, labelProps, ...inputProps } = props;
+    const {controlId, label, groupClass,labelProps, ...inputProps } = props;
 
         return (
-            <Form.Group className="my-input"  controlId={controlId}>
+            <Form.Group className={`my-input ${true && groupClass}`}  controlId={controlId}>
                 <Form.Label {...(labelProps && { ...labelProps })} >{label}</Form.Label>
             <Form.Control {...inputProps} />
             </Form.Group>
@@ -53,10 +53,10 @@ export function Textbox(props) {
 export function FileInput(props) {
     const { controlId, label, labelProps, type, ...inputProps } = props;
     
-    let svg = <VideoIcon />;
+    let svg = <VideoIcon className="img-fluid" />;
 
     if (type === "photo") {
-        svg = <PhotoIcon />
+        svg = <PhotoIcon className="img-fluid" />
     }
       // will hold a reference for our real input file
   let inputFile = '';

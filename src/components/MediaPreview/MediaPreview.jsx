@@ -13,7 +13,7 @@ function MediaPreview(props) {
 
    
   return (
-      <div className="my-4">
+      <div className="mb-4">
           
 
           {video[0] && (
@@ -21,8 +21,10 @@ function MediaPreview(props) {
                  <h6 className="mb-2">Videos</h6>
                   <div className="video-preview  mb-4">
                       {video.map(function (data, index) {
-                          console.log(this)
-                          return <video src={data} key={index} onClick={(e)=> removeHandler('video', index) }  ></video>
+                        console.log(this)
+                        return (<div>
+                         <video src={data} key={index} onClick={(e) => removeHandler('video', index)}  ></video>
+                        </div>)
                       })
                       }
                  </div>
@@ -37,7 +39,7 @@ function MediaPreview(props) {
           <div className="image-preview">
                       {photos.map(function (data, index) {
                  console.log(this.indexOf(data))
-              return <img src={data} key={index} alt="upload preview" onClick={(e)=> removeHandler('photo', index) } />;
+              return(<div> <img src={data} key={index} alt="upload preview" onClick={(e)=> removeHandler('photo', index) } /></div>);
             }, photos)}
           </div>
         </>

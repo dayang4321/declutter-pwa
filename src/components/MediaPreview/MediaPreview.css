@@ -3,6 +3,15 @@
     min-height: 70px;
     height: 18.12vw;
     max-height: 100px;
+    position: relative;
+    display: flex;
+}
+.image-preview>div,
+.video-preview>div{
+    min-height: 70px;
+    height: 18.12vw;
+    max-height: 100px;
+    position: relative;
 }
 
 
@@ -15,7 +24,31 @@
     max-width: 100px;
 }
 
+
+.image-preview >div::after,
+.video-preview >div::after{
+  
+    content: '—';
+    position: absolute;
+    font-weight: 900;
+    left: -5%;
+    top: 0;
+    font-size: 20px;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    border: 3px solid black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--light-color);
+}
+
+
+
 .delete-text{
     font-family: var(--second-font-family);
     font-size: min(max(10px, 2.9vw), 14px);
+    display: none;
 }
