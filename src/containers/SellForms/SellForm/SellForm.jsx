@@ -159,9 +159,11 @@ const SellForm = (props) => {
                 var reader = new FileReader();
                 // eslint-disable-next-line no-loop-func
                 reader.onload = function (e) {
+
+                    console.log(file,e.target)
     
-                    type==="defect"? setDefectPhotoFiles([...defectPhotoFiles, e.target.result]):  
-                    setPhotoFiles([...photoFiles, e.target.result]);
+                    type==="defect"? setDefectPhotoFiles([...defectPhotoFiles, {file:file,data:e.target.result}]):  
+                    setPhotoFiles([...photoFiles, {file:file,data:e.target.result}]);
                 }
                 reader.readAsDataURL(file);
                 i++;
@@ -178,8 +180,8 @@ const SellForm = (props) => {
         if (e.target.files[0]) {
             let file = e.target.files[0];
             let blobURL = URL.createObjectURL(file);
-            type==="defect"? setDefectVideoFile([blobURL]):  
-            setVideoFile([blobURL]);
+            type==="defect"? setDefectVideoFile([{file:file, data: blobURL}]):  
+            setVideoFile([{file:file, data: blobURL}]);
         }
         return
     }
@@ -208,14 +210,14 @@ const SellForm = (props) => {
             const  newState =  defectPhotoFiles.filter((data, index) => {
                 return  index!==id
          })
-              setPhotoFiles([...newState]);
+              setDefectPhotoFiles([...newState]);
         }
 
         if (type === "video") {
             const  newState =  defectVideoFile.filter((data, index) => {
                 return  index!==id
          })
-              setVideoFile([...newState]);
+              setDefectVideoFile([...newState]);
         } 
         
     }
@@ -233,11 +235,11 @@ const SellForm = (props) => {
             formData.append("name", sellForm.product_name.value);
             formData.append("description", sellForm.description.value);
             formData.append("selling_price", sellForm.price.value);
-            formData.append("video", videoFile);
-            formData.append("images[]", [...photoFiles]);
+            formData.append("video", videoFile.map(f=>f.file)[0]);
+            photoFiles.forEach((f) => formData.append("images[]", f.file));
             formData.append("defect[description]", sellForm.defect_description.value);
-            formData.append("defect[video]", defectVideoFile);
-            formData.append("defect[images][]",  defectPhotoFiles);
+            formData.append("defect[video]", defectVideoFile.map(f => f.file)[0]);
+            defectPhotoFiles.forEach((f) => formData.append("defect[images][]", f.file))
             // const postData = {
             //     name: sellForm.product_name.value,
             //     description: sellForm.description.value,
@@ -334,7 +336,7 @@ console.log(photoFiles)
 
 
                 
-                    <MediaPreview photos={photoFiles} removeHandler={mediaRemoveHandler}  video={ videoFile}/>
+                    <MediaPreview photos={photoFiles.map(f=>f.data)} removeHandler={mediaRemoveHandler}  video={ videoFile.map(f=>f.data)}/>
                 
                 
 
@@ -369,7 +371,7 @@ console.log(photoFiles)
                                         inputChangeHandler(e, "defect_images", sellForm, setSellForm)
                                     }} name="defect_images" />
                             </div>
-                            <MediaPreview photos={defectPhotoFiles} removeHandler={defectRemoveHandler}  video={defectVideoFile}/>
+                            <MediaPreview photos={defectPhotoFiles.map(f=>f.data)} removeHandler={defectRemoveHandler}  video={defectVideoFile.map(f=>f.data)}/>
                         </div>
                         </Collapse> 
                         <Button className="submit-btn btn btn-dark p-3 w-100" disabled={formLoading} type="submit">{formLoading?'Submitting..':'Done'}</Button>

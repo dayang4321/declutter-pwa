@@ -5,7 +5,7 @@ import useLongPress from "../../hooks/useLongPress";
 import "./MediaPreview.css";
 
 function MediaPreview(props) {
-    const { photos, video, removeHandler } = props;
+    const { photos, video, removeHandler  } = props;
 
   //  const longPressObj = useLongPress(removeHandler("photo"), 1000)
     
@@ -22,8 +22,8 @@ function MediaPreview(props) {
                   <div className="video-preview  mb-4">
                       {video.map(function (data, index) {
                         console.log(this)
-                        return (<div>
-                         <video src={data} key={index} onClick={(e) => removeHandler('video', index)}  ></video>
+                        return (<div key={index}>
+                         <video src={data} onClick={(e) => removeHandler('video', index)}  ></video>
                         </div>)
                       })
                       }
@@ -39,7 +39,7 @@ function MediaPreview(props) {
           <div className="image-preview">
                       {photos.map(function (data, index) {
                  console.log(this.indexOf(data))
-              return(<div> <img src={data} key={index} alt="upload preview" onClick={(e)=> removeHandler('photo', index) } /></div>);
+              return(<div key={index}> <img src={data} alt="upload preview" onClick={(e)=> removeHandler('photo', index) } /></div>);
             }, photos)}
           </div>
         </>
