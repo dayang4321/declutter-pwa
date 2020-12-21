@@ -72,7 +72,7 @@ export function FileInput(props) {
         <Form.Group  className="my-input file-input" controlId={controlId}>
             <Form.File className="file" {...inputProps} label={label}
                 ref={input => {inputFile = input}} multiple />
-            <div onClick={uploadClick}>{svg}</div>
+            <div onClick={uploadClick} className="text-center">{svg}</div>
             <p className="text-center mt-4">{label}</p>
         </Form.Group>
     )

@@ -103,16 +103,16 @@ const Auth = (props) => {
     return (
         <div className="d-flex align-items-center w-100 h-100 justify-content-center">       
         <form className="w-100" noValidate id="signinForm" onSubmit={handleSubmit}>
-                <Input label="Name" value={authForm.name.value} name="name" required={true}
+                <Input label="Name" type="text" value={authForm.name.value} name="name" required={true}
                     onChange={(e) => inputChangeHandler(e, "name", authForm, setAuthForm)}
                     isValid={shouldValidate("name")}
                     isInvalid={shouldInValidate("name")}                 
                 />
-                <Input label="Email Address"  value={authForm.email.value} required={true}
+                <Input label="Email Address" type="email" value={authForm.email.value} required={true}
                     onChange={(e) => inputChangeHandler(e, "email", authForm, setAuthForm)}
                     isValid={shouldValidate("email")}
                     isInvalid={shouldInValidate("email")} />
-                <Input label="Phone Number"  value={authForm.phone.value} required={true}
+                <Input label="Phone Number"  type="tel" value={authForm.phone.value} required={true}
                     onChange={(e) => inputChangeHandler(e, "phone", authForm, setAuthForm)}
                     isValid={shouldValidate("phone")}
                     isInvalid={shouldInValidate("phone")} />

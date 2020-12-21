@@ -3,7 +3,7 @@ import Axios from 'axios'
 const instance = Axios.create({
     baseURL: "https://api.declutter.ng",
     headers: { 
-    'Content-Type': 'multipart/form-data', 
+   // 'Content-Type': 'multipart/form-data', 
      // 'X-Authorization': 'Oix1Xh0gOFreXmQlL4JPJWcDsnvo3La4LDXm9q4OCiSxV9XhYk7ziYcMIj1ctbci',
       },
 });
