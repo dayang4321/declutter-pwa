@@ -6,7 +6,7 @@ import {Collapse} from 'react-bootstrap'
 
 
 import { AuthContext } from '../../../context/AuthContext'
-import {inputChangeHandler} from '../../../shared/utility'
+import {inputChangeHandler, currencyDisplay} from '../../../shared/utility'
 
 import './SellForm.css'
 import MediaPreview from '../../../components/MediaPreview/MediaPreview';
@@ -311,9 +311,10 @@ console.log(photoFiles)
                 </div>
                 <div className="tooltip-group">   
                     <FormToolTip textArrIndex={2}/>
-                            <Input label="Selling Price" type="number" controlId="price" groupClass="price-group" required={true}
-                                 value={sellForm.price.value}
-                                onChange={(e) => inputChangeHandler(e, "price", sellForm, setSellForm)}
+                            <Input label="Selling Price"  controlId="price" groupClass="price-group" required={true}
+                                value={sellForm.price.value}
+                                onChange={(e) => {inputChangeHandler(e, "price", sellForm, setSellForm);
+                                                   currencyDisplay(e)} }
                     isValid={shouldValidate("price")}
                     isInvalid={shouldInValidate("price")} />
                 </div>
