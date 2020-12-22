@@ -445,7 +445,7 @@ const SellForm = (props) => {
                       );
                     }}
                     name="defect_video"
-                    errorStatus={formTouched && !sellForm.video.valid}
+                    errorStatus={formTouched && !sellForm.defect_video.valid}
                   />
 
                   <FileInput
