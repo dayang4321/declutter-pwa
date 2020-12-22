@@ -14,7 +14,7 @@ function SellForms() {
     const [sellFormsArr, setSellFormsArr] = useState([])
     
     
-    const formIndex = sellFormsArr.length;
+   // const formIndex = sellFormsArr.length;
 
    
 

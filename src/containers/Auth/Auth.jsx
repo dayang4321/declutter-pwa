@@ -3,7 +3,7 @@ import Input from '../../components/UI/Input/Input';
 
 import { AuthContext } from '../../context/AuthContext'
 import {inputChangeHandler} from '../../shared/utility'
-import { useHistory } from "react-router-dom";
+// import { useHistory } from "react-router-dom";
 import './Auth.css'
 import { Button } from 'react-bootstrap';
 
@@ -50,9 +50,9 @@ const authFormObj = {
 
 const Auth = (props) => {
 
-    const history = useHistory();
+   // const history = useHistory();
 
-     const [isSignedUp, setIsSignedUp] =  useState(false);
+   //  const [isSignedUp, setIsSignedUp] =  useState(false);
 
     // // const [hasError, setHasError] =  useState(false);
 

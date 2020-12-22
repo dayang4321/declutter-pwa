@@ -1,5 +1,5 @@
-import React, { useCallback } from "react";
-import useLongPress from "../../hooks/useLongPress";
+import React from "react";
+
 
 
 import "./MediaPreview.css";
@@ -38,7 +38,7 @@ function MediaPreview(props) {
           <h6 className="mb-2">Pictures</h6>
           <div className="image-preview">
                       {photos.map(function (data, index) {
-                 console.log(this.indexOf(data))
+             //    console.log(this.indexOf(data))
               return(<div key={index}> <img src={data} alt="upload preview" onClick={(e)=> removeHandler('photo', index) } /></div>);
             }, photos)}
           </div>
