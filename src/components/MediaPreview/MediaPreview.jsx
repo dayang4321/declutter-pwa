@@ -5,7 +5,7 @@ import React from "react";
 import "./MediaPreview.css";
 
 function MediaPreview(props) {
-    const { photos, video, removeHandler  } = props;
+    const { photos, video, removeHandler,   } = props;
 
   //  const longPressObj = useLongPress(removeHandler("photo"), 1000)
     

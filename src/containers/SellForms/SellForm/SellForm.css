@@ -36,3 +36,18 @@ top: 40%
     content: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' fill='none' stroke='%23dc3545' viewBox='0 0 12 12'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
 }
 
+.form-submit .progress {
+    position: relative;
+    display: flex;
+    height: 1.1rem;
+    overflow: hidden;
+    line-height: 0;
+    font-size: .75rem;
+    background-color: var(--primary-color);
+    border-radius: .25rem;
+    bottom: 1rem;
+}
+
+.form-submit .progress-bar { 
+    background-color: black;
+}

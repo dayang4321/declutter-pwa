@@ -15,7 +15,8 @@ import "./SellForm.css";
 import MediaPreview from "../../../components/MediaPreview/MediaPreview";
 //import useLongPress from '../../../hooks/useLongPress';
 import Axios, { setAuthToken } from "../../../declutter-axios-base";
-import { Button } from "react-bootstrap";
+import { Button,ProgressBar } from "react-bootstrap";
+import getBlobDuration from 'get-blob-duration'
 
 const sellFormObj = {
     product_name: {
@@ -112,6 +113,8 @@ const SellForm = (props) => {
 
     const [defectVideoFile, setDefectVideoFile] = React.useState([]);
 
+    const [formProgress, setFormProgress] = React.useState(0);
+
     const defectValidateHandler = useCallback(() => {
         defected
             ? setSellForm((s) => {
@@ -136,6 +139,7 @@ const SellForm = (props) => {
                 };
             })
             : setSellForm((s) => {
+                console.log('set')
                 return {
                     ...s,
                     defect_description: {
@@ -212,15 +216,42 @@ const SellForm = (props) => {
     };
 
     const videoPreviewHandler = (e, type) => {
+    
+
+// var media = new Audio(reader.result);
+// media.onloadedmetadata = function(){
+//      media.duration; // this would give duration of the video/audio file
+// };    
         if (e.target.files[0]) {
             let file = e.target.files[0];
             let blobURL = URL.createObjectURL(file);
-            type === "defect"
+            getBlobDuration(blobURL).then(function(duration) {
+                console.log(duration + ' seconds');
+
+                if (duration > 21) {
+                    return
+                } else
+                type === "defect"
                 ? setDefectVideoFile([{ file: file, data: blobURL }])
-                : setVideoFile([{ file: file, data: blobURL }]);
+                    : setVideoFile([{ file: file, data: blobURL }]);
+                
+              });
+            
         }
         return;
     };
+
+
+    // const videoLengthHandler = (e,type) => {
+    //     console.log(e.target.duration);
+
+    //     if (type === "normal") {
+    //        setVideoFileLength({...videoFileLength, normal:e.target.duration })
+    //    }
+    // }
+
+
+
 
     const mediaRemoveHandler = (type, id) => {
         if (type === "photo") {
@@ -277,7 +308,15 @@ const SellForm = (props) => {
             setAuthToken(authContext.token);
             //console.log(authContext.token)
 
-            Axios.post("/products", formData)
+            Axios.post("/products", formData, {
+                onUploadProgress: ProgressEvent => {
+                //   this.setState({
+                //     loaded: (ProgressEvent.loaded / ProgressEvent.total*100),
+                // })
+                    setFormProgress(ProgressEvent.loaded / ProgressEvent.total*100)
+                //   console.log(ProgressEvent.loaded/ProgressEvent.total*100)
+            },
+         })
                 .then((res) => {
                     setFormTouched(false);
                     setFormLoading(false);
@@ -296,7 +335,7 @@ const SellForm = (props) => {
     // console.log(photoFiles,defectPhotoFiles)
     // console.log(videoFile,defectVideoFile)
 
-    // console.log(sellForm)
+  //console.log(defected)
 
     return (
         <div className="switch-collapse">
@@ -364,6 +403,8 @@ const SellForm = (props) => {
                                     videoPreviewHandler(e);
                                     inputChangeHandler(e, "video", sellForm, setSellForm);
                                 }}
+
+                                
                                 name="video"
                                 errorStatus={formTouched && !sellForm.video.valid}
                                 label="Add product video"
@@ -388,6 +429,7 @@ const SellForm = (props) => {
                             photos={photoFiles.map((f) => f.data)}
                             removeHandler={mediaRemoveHandler}
                             video={videoFile.map((f) => f.data)}
+                          
                         />
 
                         <div className="tooltip-group mb-4">
@@ -467,13 +509,17 @@ const SellForm = (props) => {
                                 Kindly review your inputs
                             </p>
                         )}
+                        <div className="form-submit">
+
                         <Button
                             className="submit-btn btn btn-dark p-3 w-100"
                             disabled={formLoading}
                             type="submit"
                         >
                             {formLoading ? "Submitting.." : "Done"}
-                        </Button>
+                            </Button>
+                           {formLoading&& <ProgressBar now={formProgress }/>}
+                        </div>
                     </form>
                 </div>
             </Collapse>
