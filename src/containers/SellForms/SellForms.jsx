@@ -73,7 +73,7 @@ function SellForms() {
     const completeMsg = (
         <div className="text-center">
         <img className="tick-svg mx-auto" src={Tick} alt="tick" />
-            <h2 className="text-left">You would be notified once your products are verified</h2>
+            <h2 className="text-left">You would be notified once your product is verified</h2>
             <button className="another-btn w-100 text-center btn bg-transparent"
                     onClick={(e) => {
                         e.preventDefault();
@@ -87,7 +87,7 @@ function SellForms() {
 
 
 
-    console.log(isOpenArr, formIndex, sellFormsArr )
+    //console.log(isOpenArr, formIndex, sellFormsArr )
 
     return (
      <div>

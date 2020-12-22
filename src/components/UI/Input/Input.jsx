@@ -51,9 +51,9 @@ export function Textbox(props) {
 }  
 
 export function FileInput(props) {
-    const { controlId, label, labelProps, type, ...inputProps } = props;
+    const { controlId, label, labelProps, type, errorStatus, ...inputProps } = props;
     
-    let svg = <VideoIcon className="img-fluid" />;
+    let svg = <VideoIcon className={`img-fluid ${errorStatus && 'invalid'}`} />;
 
     if (type === "photo") {
         svg = <PhotoIcon className="img-fluid" />
@@ -71,7 +71,7 @@ export function FileInput(props) {
     return (
         <Form.Group  className="my-input file-input" controlId={controlId}>
             <Form.File className="file" {...inputProps} label={label}
-                ref={input => {inputFile = input}} multiple />
+                ref={input => {inputFile = input}} />
             <div onClick={uploadClick} className="text-center">{svg}</div>
             <p className="text-center mt-4">{label}</p>
         </Form.Group>
