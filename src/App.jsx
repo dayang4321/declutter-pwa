@@ -23,7 +23,7 @@ function App() {
   if (authContext.isAuth) {
     routes = (
       <Switch>
-        <Route path="/seller" component={Seller} />
+        <Route path="/seller" exact component={Seller} />
         <Redirect to="/seller" />
         </Switch>
     );
