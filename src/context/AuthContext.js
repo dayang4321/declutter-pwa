@@ -64,7 +64,7 @@ const AuthContextProvider = props => {
 
     const checkAuthHandler = () => {
         // console.log(isAuthenticated)
-      console.log(authToken)
+      //console.log(authToken)
         // console.log(isAuthValid)
         if (authToken && isAuthValid) {
             
@@ -108,7 +108,7 @@ const AuthContextProvider = props => {
             .catch(error => {
                 setAuthLoading(false)
                 setAuthComplete(true);
-                error.response ? alert(error.response.data.message) : alert(error);
+                error.response ? alert(error.response.data.message) : alert(error.message);
             });
     
       //

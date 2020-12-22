@@ -264,10 +264,10 @@ const SellForm = (props) => {
             formData.append("name", sellForm.product_name.value);
             formData.append("description", sellForm.description.value);
             formData.append("selling_price", sellForm.price.value);
-            formData.append("video", videoFile.map((f) => f.file)[0]);
+            videoFile.forEach((f) => formData.append("video", videoFile.map((f) => f.file)[0]));
             photoFiles.forEach((f) => formData.append("images[]", f.file));
-            formData.append("defect[description]", sellForm.defect_description.value);
-            formData.append("defect[video]", defectVideoFile.map((f) => f.file)[0]);
+            defectVideoFile[0] && formData.append("defect[description]", sellForm.defect_description.value);
+            defectVideoFile.forEach((f) => formData.append("defect[video]", defectVideoFile.map((f) => f.file)[0]));
             defectPhotoFiles.forEach((f) =>
                 formData.append("defect[images][]", f.file)
             );

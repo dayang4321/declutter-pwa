@@ -21,7 +21,7 @@ function MediaPreview(props) {
                  <h6 className="mb-2">Videos</h6>
                   <div className="video-preview  mb-4">
                       {video.map(function (data, index) {
-                        console.log(this)
+                     //   console.log(this)
                         return (<div key={index}>
                          <video src={data} onClick={(e) => removeHandler('video', index)}  ></video>
                         </div>)
